@@ -16,7 +16,10 @@ def group_anagrams(strs):
             counter += 1
     print(group_anagrams_list)
 
+
 # Faster, the run time complexity is m*n*26 ~ m*n
+
+
 def group_anagrams_faster(strs):
     word_dict = defaultdict(list)
     for word in strs:
@@ -26,6 +29,7 @@ def group_anagrams_faster(strs):
         word_dict[tuple(characters)].append(word)
     print(word_dict.values())
     return word_dict.values()
+
 
 if __name__ == '__main__':
     group_anagrams(["eat","tea","tan","ate","nat","bat"])
