@@ -30,3 +30,28 @@ def longest_consecutive(nums):
 
     return longest
 
+# New implementation should run in O(n) time uses a set to store all the numbers with no repetition
+# Finds the sequences of the numbers based looking at the fact that they have no left neighbours
+# For every element in the set, check if it has left neighbour, if not it is start of sequence and 
+# attempt to find the longest sequence.
+def longestConsecutive(nums):
+    sorted_nums = set(nums)
+    longest = 0 
+    current = 0 
+    # Go through the elements in the set
+    for number in sorted_nums:
+        # If no element to the left, it must be the beginning of the sequence
+        if number - 1 not in sorted_nums:
+            current += 1
+            # Loop through and find the length of that sequence
+            while True:
+                # As long as there is a right neighbour, increment the current count
+                if number + 1 in sorted_nums:
+                    current += 1
+                    number += 1
+                # Else is the end of sequence, update longest and reset current
+                else:
+                    longest = max(current, longest)
+                    current = 0 
+                    break
+    return longest
