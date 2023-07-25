@@ -1,5 +1,6 @@
 # Given an interger array nums, return all the triplets [nums[i], nums[i], nums[k]]
 # Such that i!=j i!=k j!=k and nums[i]+nums[j]+nums[k] = 0
+# Time complexity is O(nlogn) + O(n^2) = O(n^2) also space complexity o(n) due to the sort
 
 def threeSum(nums):
     # Sort the input array
