@@ -24,3 +24,30 @@ def trap(height):
 
 print(trap([0,1,0,2,1,0,1,3,2,1,2,1]))
 print(trap([4,2,0,3,2,5]))
+
+# This is the O(n) solution, notice that the minimum of the two pointers will limit how much water can be stored at
+# That specific position memory complexity is O(1)
+def trap_save(height):
+    maximum = 0
+    maxleft = height[0]
+    maxright = height[len(height) - 1]
+    left = 0
+    right = len(height) - 1
+    while left < right:
+        if maxleft <= maxright:
+            left += 1
+            # We update maxleft before computing the current water stored. This ensures that current water will never
+            # be zero as the new maxleft/maxright will always be >= height[left/right] if updated.
+            maxleft = max(maxleft, height[left])
+            maximum += maxleft - height[left]
+        else:
+            right -= 1
+            maxright = max(maxright, height[right])
+            maximum += maxright - height[right]
+    return maximum
+
+
+print(trap_save([0,1,0,2,1,0,1,3,2,1,2,1]))
+print(trap_save([4,2,0,3,2,5]))
+
+
