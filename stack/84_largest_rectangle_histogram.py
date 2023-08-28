@@ -1,6 +1,6 @@
 # Solution uses stack. The idea is to calculate the maximum area that can be made with the current rectangle's height
 
-def largestRectangleArea(heights: List[int]) -> int:
+def largestRectangleArea(heights) -> int:
     stack = []
     max_area = 0
     for i, height in enumerate(heights):
@@ -14,3 +14,5 @@ def largestRectangleArea(heights: List[int]) -> int:
     for i, h in stack:
         max_area = max(max_area, h * (len(heights) - i))
     return max_area
+
+print(largestRectangleArea([2,4,5,1,2,5]))
