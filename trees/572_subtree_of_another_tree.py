@@ -1,4 +1,5 @@
 from typing import Optional
+# Time complexity is O(n*m) the size of both trees multiplied by each other
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
