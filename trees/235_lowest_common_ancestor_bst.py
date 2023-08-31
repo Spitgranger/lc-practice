@@ -25,3 +25,14 @@ def lowestCommonAncestor(root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'Tre
             return leftarr[i - 1]
         i += 1
         j += 1
+
+# Solution using the propertities of binary search tree, o(ln(n)) and O(H) SPACE
+def lowestCommonAncestor1(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def dfs(tree, p, q):
+        if tree.val > p.val and tree.val > q.val:
+            return dfs(tree.left, p, q)
+        elif tree.val < p.val and tree.val < q.val:
+            return dfs(tree.right, p, q)
+        else:
+            return tree
+    return dfs(root, p, q)
