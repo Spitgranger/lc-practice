@@ -18,3 +18,23 @@ def numIslands(grid: List[List[str]]) -> int:
                 number += 1
             dfs(i, j)
     return number
+
+#SOlution without set keeping track of visited nodes, set each element of grid to '0' after visiting them
+def numIslands(grid: List[List[str]]) -> int:
+    number = 0
+    height = len(grid)
+    width = len(grid[0])
+    def dfs(i, j):
+        if i >= height or j >= width or i < 0 or j < 0 or grid[i][j] == '0':
+            return
+        grid[i][j] = '0'
+        dfs(i + 1, j)
+        dfs(i, j + 1)
+        dfs(i - 1, j)
+        dfs(i, j - 1)
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == '1':
+                number += 1
+            dfs(i, j)
+    return number
