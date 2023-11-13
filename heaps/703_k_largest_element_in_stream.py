@@ -1,5 +1,6 @@
 # Idea is to maintain a min heap with k elements. We know that the largest k elements are in the heap and that the 
 # root of the heap will have the kth largest element. 
+from typing import List
 import heapq
 class KthLargest:
     # nlog(n) time, construct heap in n time then potentialy pop n times with each time taking log(n)
