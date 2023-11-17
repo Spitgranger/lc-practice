@@ -2,7 +2,7 @@ from typing import List
 import math
 import heapq
 #doesnt currently work as hashmap does not allow duplicate keys, so if two points have the same distance only one will be returned and repeated.
-def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+def kClosest(points: List[List[int]], k: int) -> List[List[int]]:
         heap = []
         # Create a min heap in n time
         for point in points:

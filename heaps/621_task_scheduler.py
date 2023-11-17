@@ -1,7 +1,7 @@
 from typing import List
 import heapq
 from collections import deque
-def leastInterval(self, tasks: List[str], n: int) -> int:
+def leastInterval(tasks: List[str], n: int) -> int:
         #Use heap and queye to keep track of the next task and when the tasks can be readded to queue respectively
         counts = {}
         for element in tasks:

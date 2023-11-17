@@ -1,6 +1,6 @@
 from typing import List
 import heapq
-def lastStoneWeight(self, stones: List[int]) -> int:
+def lastStoneWeight(stones: List[int]) -> int:
         #Create a heap in n time, multiply every element by -1 to get a max heap.
         heap = []
         for i in stones:
