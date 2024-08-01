@@ -25,3 +25,22 @@ class Solution:
                         senators.append(curr)
                         break
         return "Radiant" if senators.pop() == 'R' else "Dire"
+
+    # This is the optimized solution. It is O(n). The idea is to maintain 2 queues, one storing the indices of R and the other of D. For each iteration we get the first element of each queue by poping
+    # then we check which one came first. Who ever came first gets put to the end of the queue, adding len(senate) to its value to allow for cyclic comparisions. We do this until one queue is empty and return accordingly.
+    def predictPartyVictoryOptimized(self, senate: str) -> str:
+        r = deque()
+        d = deque()
+        for i in range(len(senate)):
+            if senate[i] == "R":
+                r.append(i)
+            else:
+                d.append(i)
+        while (len(r) and len(d)):
+            rad = r.popleft()
+            dire = d.popleft()
+            if rad > dire:
+                d.append(dire + len(senate))
+            else:
+                r.append(rad + len(senate))
+        return "Radiant" if len(r) else "Dire"
