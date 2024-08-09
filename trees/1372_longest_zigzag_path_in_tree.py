@@ -32,3 +32,19 @@ class Solution:
             iterate_tree(root.right)
         iterate_tree(root)
         return ret_len - 1
+
+    # Working solution O(n) runtime run a dfs on the tree at each node, keeping track of the current left and right paths.
+    # at each level if we go right that means we went left before, so increment that path, if we go left that means we went right
+    # before so increment the right path and reset
+    def longestZigZag(self, root: Optional[TreeNode]) -> int:
+        ret_val = 0
+
+        def dfs(root, left, right):
+            nonlocal ret_val
+            if not root:
+                return
+            ret_val = max(ret_val, left, right)
+            dfs(root.right, 0, left + 1)
+            dfs(root.left, right + 1, 0)
+        dfs(root, 0, 0)
+        return ret_val
